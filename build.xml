@@ -1,0 +1,49 @@
+<project name="reflection" default="compile" basedir=".">
+
+  <property name="build.compiler"       value="modern"/>
+  <property name="src"                  value="src"/>
+  <property name="BUILD"                value="build"/>
+  <property name="classes"              value="${BUILD}/classes"/>-
+
+
+<target name="compile"
+          depends="reflection"/>
+
+<target name="clean">
+       <delete dir="${BUILD}"/>
+</target>
+
+  <!-- Prepare target directories -->
+  <target name="prepare">
+        <mkdir dir="${BUILD}"/>
+        <mkdir dir="${classes}"/>
+  </target>
+
+  <target name="reflection" depends="prepare">
+    <javac srcdir="${src}"
+           includes="reflection/**"
+           excludes="**/package.html"
+           destdir="${classes}"
+           classpath="${classes}"
+           debug="on"
+           optimize="on"
+           deprecation="off"/>
+  </target>
+
+ <target name="jar">
+        <mkdir dir="${BUILD}/jar"/>
+        <jar destfile="${BUILD}/jar/reflection.jar" basedir="${BUILD}/classes">
+            <manifest>
+                <attribute name="Main-Class" value="reflection.driver.Driver"/>
+            </manifest>
+        </jar>
+    </target>
+
+<target name="run" depends="jar">
+        <java jar="${BUILD}/jar/reflection.jar"  fork="true">
+	 </java>
+	
+    </target>
+
+
+</project>
