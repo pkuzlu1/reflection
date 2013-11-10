@@ -8,6 +8,8 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 
+import javax.swing.plaf.basic.BasicInternalFrameTitlePane.SystemMenuBar;
+
 public class Deserialize {
 	private String filename;
 
@@ -23,7 +25,7 @@ public class Deserialize {
 		try {
 			br = new BufferedReader(new FileReader(filename));
 
-			int object_counter = 0;
+		
 			Object temp=null;
 			Class<?> c = null;
 			while ((inputLine = br.readLine()) != null) {
@@ -33,7 +35,7 @@ public class Deserialize {
 				
 					int classname_start=inputLine.indexOf("\"");
 					int classname_end=inputLine.indexOf("\"",classname_start+1);
-					System.out.println(classname_start+" "+classname_end);
+					//System.out.println(classname_start+" "+classname_end);
 					
 					String classname=inputLine.substring(classname_start+1,classname_end);
 					c = Class.forName(classname);
@@ -43,7 +45,7 @@ public class Deserialize {
 				else if (inputLine.contains("</complexType>")) {
 					objects.add(temp);
 					temp=null;
-					object_counter++;
+					
 				}
 				else{
 					if(inputLine.length()>0){
@@ -51,28 +53,54 @@ public class Deserialize {
 						int tag_start=inputLine.indexOf("<");
 						int tag_end=inputLine.indexOf(" ",tag_start);
 						String tag=Character.toUpperCase(inputLine.charAt(tag_start+1))+inputLine.substring(tag_start+2,tag_end);
-						System.out.println(tag);
+						//System.out.println(tag);
 						
 						//read type
 						int type_start=inputLine.indexOf(":",inputLine.indexOf("\"")); 
 						int type_end=inputLine.indexOf("\"",type_start);
 						String type= inputLine.substring(type_start+1,type_end);
-						System.out.println(type);
+						//System.out.println(type);
 						
 						//read value
 						int value_start=inputLine.indexOf(">");
 						int value_end=inputLine.indexOf("<", value_start);
 						String value=inputLine.substring(value_start+1,value_end);
-						System.out.println(value);
+						//System.out.println(value);
 						
-						
+						/*
 						Method[] method = c.getDeclaredMethods();
 						for(int i=0;i<method.length;i++){
 							System.out.println(method[i].toString());	
 						}
-						Method mymethod=c.getD.getDeclaredMethod("set"+tag);
-						//Class parameters[]= method.getParameterTypes();
-						
+						*/
+						if(type.equals("int")){
+							Method mymethod=c.getDeclaredMethod("set"+tag,new Class[]{Integer.TYPE});
+							mymethod.invoke(temp,(Integer.valueOf(value)));
+						}
+						else if(type.equals("string")){
+							Method mymethod=c.getDeclaredMethod("set"+tag,new Class[]{String.class});
+							mymethod.invoke(temp,value);
+						}
+						else if(type.equals("short")){
+							Method mymethod=c.getDeclaredMethod("set"+tag,new Class[]{Short.TYPE});
+							mymethod.invoke(temp,(Short.valueOf(value)));
+						}
+						else if(type.equals("double")){
+							Method mymethod=c.getDeclaredMethod("set"+tag,new Class[]{Double.TYPE});
+							mymethod.invoke(temp,(Double.valueOf(value)));
+						}
+						else if(type.equals("long")){
+							Method mymethod=c.getDeclaredMethod("set"+tag,new Class[]{Long.TYPE});
+							mymethod.invoke(temp,(Long.valueOf(value)));
+						}
+						else if(type.equals("char")){
+							Method mymethod=c.getDeclaredMethod("set"+tag,new Class[]{Character.TYPE});
+							mymethod.invoke(temp,(value.charAt(0)));
+						}
+						else if(type.equals("float")){
+							Method mymethod=c.getDeclaredMethod("set"+tag,new Class[]{Float.TYPE});
+							mymethod.invoke(temp,(Float.valueOf(value)));
+						}
 					}
 				}
 				//System.out.println(inputLine);
@@ -99,6 +127,9 @@ public class Deserialize {
 		} catch (NoSuchMethodException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		} finally {
 			try {
 				br.close();
@@ -106,7 +137,8 @@ public class Deserialize {
 				System.err.println("Cannot Close the Stream!");
 			}
 		}
-		return null;
+		System.out.println("Total Number of objects: "+objects.size());
+		return objects;
 
 	}
 }
