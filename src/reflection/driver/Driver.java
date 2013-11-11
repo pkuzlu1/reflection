@@ -18,7 +18,7 @@ public class Driver {
 	public static void main(String[] args) {
 		if (args.length != 3) {
 			System.err
-					.println("Wrong Number of Arguments ! \n Usage: serDeSer <inputFilename> <outputFilename> <debugvalue>");
+					.println("Wrong Number of Arguments ! \n Usage: reflection <inputFilename> <outputFilename> <debugvalue>");
 			System.exit(-1);
 		}
 		try {
@@ -27,13 +27,14 @@ public class Driver {
 			System.err.println("Debug value must be integer!");
 			System.exit(-1);
 		} finally {}
-
+		
+		//get filename args
 		String inputFileName = args[0];
 		String outputFileName = args[1];
 
 		DeSerializationStrategy deSerializer = new Deserialize();
 		SerializationStrategy Serializer = new Serialize(outputFileName);
-
+		
 		ArrayList<Object> deSerializedObjects = deserialize(inputFileName,deSerializer);
 		if (deSerializedObjects != null){
 			//Sets ensure uniqueness 
@@ -61,10 +62,11 @@ public class Driver {
 			System.exit(-1);
 		}
 	}
-
+	//serialize each object based on the strategy
 	public static void serialize(Object object, SerializationStrategy serializer){
 		serializer.serializeObject(object);
 	}
+	//deserialize given file 
 	public static ArrayList<Object> deserialize(String filename, DeSerializationStrategy deserializer){
 		return deserializer.deSerialize(filename);
 	}
