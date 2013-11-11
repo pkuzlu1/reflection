@@ -1,5 +1,9 @@
 package reflection.util;
 
+/**
+ * @author bedri
+ *
+ */
 public class MyAllTypesSecond {
 	public int getMyIntS() {
 		return myIntS;

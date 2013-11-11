@@ -4,6 +4,7 @@
   <property name="src"                  value="src"/>
   <property name="BUILD"                value="build"/>
   <property name="classes"              value="${BUILD}/classes"/>
+  <property name="TEAM_MEMBERS"           value="Bedri_Sendir"/>
 
 
 <target name="compile"
@@ -19,7 +20,7 @@
         <mkdir dir="${classes}"/>
   </target>
 
-  <target name="reflection" depends="prepare">
+ <target name="reflection" depends="prepare">
     <javac srcdir="${src}"
            includes="reflection/**"
            excludes="**/package.html"
@@ -27,23 +28,52 @@
            classpath="${classes}"
            debug="on"
            optimize="on"
-           deprecation="off"/>
-  </target>
+           deprecation="on"
+	   includeantruntime="false"/>
+ </target>
 
- <target name="jar">
+<target name="jar">
         <mkdir dir="${BUILD}/jar"/>
         <jar destfile="${BUILD}/jar/reflection.jar" basedir="${BUILD}/classes">
             <manifest>
                 <attribute name="Main-Class" value="reflection.driver.Driver"/>
             </manifest>
         </jar>
-    </target>
+</target>
 
 <target name="run" depends="jar">
         <java jar="${BUILD}/jar/reflection.jar"  fork="true">
-	 </java>
-	
-    </target>
+		<arg value="MyAllTypes2.txt"/>
+		<arg value="MyAllTypesCopy.txt"/>
+		<arg value="0"/>
+	</java>	
+</target>
 
 
+
+<target name="copy_files">
+        <mkdir dir="${TEAM_MEMBERS}/reflection"/>
+        <copy todir="${TEAM_MEMBERS}/reflection">
+                <fileset dir=".">
+                        <include name="src/**" />
+                        <include name="README.txt" />
+                        <include name="build.xml" />
+			<include name="MyAllTypes.txt" />
+			<include name="MyAllTypes2.txt" />
+                </fileset>
+            </copy>
+</target>
+
+<target name="purgeArchives" depends="clean">
+  <delete file="./${TEAM_MEMBERS}.tar" />
+  <delete file="./${TEAM_MEMBERS}.tar.gz" />
+</target>
+
+
+<target name="tarzip" depends="purgeArchives,copy_files">
+  <tar destfile="./${TEAM_MEMBERS}.tar" basedir="." includes="${TEAM_MEMBERS}/**" />
+  <gzip destfile="./${TEAM_MEMBERS}.tar.gz" src="./${TEAM_MEMBERS}.tar"/>
+  <delete file="./${TEAM_MEMBERS}.tar" />
+  <delete dir="${TEAM_MEMBERS}"/>
+</target>
 </project>

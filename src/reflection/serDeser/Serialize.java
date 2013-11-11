@@ -1,23 +1,23 @@
 package reflection.serDeser;
 
-import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.util.ArrayList;
 
 public class Serialize {
 	private String filename;
 	private File file;
 
+	/**
+	 * 
+	 * @param n_filename
+	 */
 	public Serialize(String n_filename) {
 		filename = n_filename;
+		//create file if it doesnot exist or delete the old one 
 		file = new File(filename);
 		try {
 			if (!file.exists()) {
@@ -27,23 +27,29 @@ public class Serialize {
 				file.createNewFile();
 			}
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			System.err.println("Cannot Create/Delete file"+filename+ " !");
 			e.printStackTrace();
+			System.exit(-1);
 		}
 	}
 
+	/**
+	 * @param object
+	 */
 	public void serializeObject(Object object) {
 
-		FileWriter fileWritter;
+		FileWriter fileWriter;
 		try {
+			//base string represents each DPSerialization object
 			String base = "";
 			base = base.concat("<DPSerialization>\n");
 			base = base.concat(" <complexType xsi:type=\""
 					+ object.getClass().getName() + "\">\n");
-			
+
 			Method methods[] = object.getClass().getMethods();
 
 			for (int i = 0; i < methods.length; i++) {
+				//check if method is getter method
 				if (checkGetter(methods[i])) {
 					String tag = getTag(methods[i].getName());
 					String type = getType(methods[i]);
@@ -52,25 +58,31 @@ public class Serialize {
 							+ "\">" + value + "</" + tag + ">\n");
 				}
 			}
-			
+
 			base = base.concat(" </complexType>\n");
 			base = base.concat("</DPSerialization>\n");
 
 			System.out.println(base);
 
-			fileWritter = new FileWriter(file, true);
-			BufferedWriter bufferWritter = new BufferedWriter(fileWritter);
+			fileWriter = new FileWriter(file, true);
+			BufferedWriter bufferWritter = new BufferedWriter(fileWriter);
 			bufferWritter.write(base);
 			bufferWritter.flush();
 			bufferWritter.close();
 
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			System.err.println("Cannot open file"+filename+" !");
 			e.printStackTrace();
+			System.exit(-1);
 		}
 
 	}
 
+	/**
+	 * Checks if given method is getter method or not
+	 * @param method
+	 * @return true if method is getter otherwise false
+	 */
 	public boolean checkGetter(Method method) {
 		if ((method.getName().startsWith("get"))
 				&& (!void.class.equals(method.getReturnType()) && (method
@@ -81,23 +93,37 @@ public class Serialize {
 		return false;
 	}
 
+	/**
+	 * @param methods
+	 * @param obj
+	 * @return
+	 */
 	public Object getValue(Method methods, Object obj) {
 
 		try {
 			return methods.invoke(obj);
 		} catch (IllegalArgumentException e) {
-			// TODO Auto-generated catch block
+			System.err.println("Illegal Argument!");
 			e.printStackTrace();
+			System.exit(-1);
 		} catch (IllegalAccessException e) {
-			// TODO Auto-generated catch block
+			System.err.println("Illegal Access!");
 			e.printStackTrace();
+			System.exit(-1);
 		} catch (InvocationTargetException e) {
-			// TODO Auto-generated catch block
+			System.err.println("Wrong Invocation Target!");
 			e.printStackTrace();
+			System.exit(-1);
 		}
+		finally{}
 		return null;
 	}
 
+	/**
+	 * Get return type of the given method.
+	 * @param methods
+	 * @return return type of the method if method is not recognized returns null
+	 */
 	public String getType(Method methods) {
 		Class<?> retClass = methods.getReturnType();
 		if (retClass.equals(Integer.TYPE)) {
@@ -124,6 +150,11 @@ public class Serialize {
 		return null;
 	}
 
+	/**
+	 * Gets tag from the method name
+	 * @param method_name
+	 * @return field name
+	 */
 	public String getTag(String method_name) {
 		int get_length = ("get").length();
 		return Character.toLowerCase(method_name.charAt(get_length)) + ""
