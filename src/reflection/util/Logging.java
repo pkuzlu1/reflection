@@ -3,7 +3,7 @@ package reflection.util;
 public class Logging {
 
 	public enum LogLevels {
-		NO_OUTPUT, DRIVER_OUTPUT, QUICK_AGENDA, ALL_ACTIVITIES, CONSTRUCTOR_CALL;
+		PRINT_UNIQUES, PRINT_SERIALIZED, METHOD_INVOKE, CONSTRUCTOR_CALL, NO_OUTPUT;
 
 	}
 
@@ -35,27 +35,26 @@ public class Logging {
 		if (debug_level == Debug.getDEBUG_VALUE()) {
 			switch (LogLevels.values()[debug_level]) {
 
-			case NO_OUTPUT: {
+			case PRINT_UNIQUES: {
 				System.out.println("Unique Objects");
 				System.out.println(message);
 				break;
 			}
-			case DRIVER_OUTPUT: {
-				System.out.println("Driver Output");
+			case PRINT_SERIALIZED: {
+				//System.out.println("Driver Output");
 				System.out.println(message);
 				break;
 			}
-			case QUICK_AGENDA: {
-				System.out.println("Quick Agenda:\n" + message);
-				break;
-			}
-			case ALL_ACTIVITIES: {
-				System.out.println("ALL ACTIVITES IN CONFERENCE :");
-				System.out.println(message);
+			case METHOD_INVOKE: {
+				System.out.println("Method invoked:" + message);
 				break;
 			}
 			case CONSTRUCTOR_CALL: {
-				System.out.println("Constructor CALL: " + message);
+				System.out.println("Constructor Call");
+				System.out.println(message);
+				break;
+			}
+			case NO_OUTPUT: {
 				break;
 			}
 

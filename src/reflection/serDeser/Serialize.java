@@ -7,7 +7,9 @@ import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
-public class Serialize {
+import reflection.util.Logging;
+
+public class Serialize implements SerializationStrategy{
 	private String filename;
 	private File file;
 
@@ -31,6 +33,7 @@ public class Serialize {
 			e.printStackTrace();
 			System.exit(-1);
 		}
+		Logging.getInstance().write(3,"Serialize Constructor Call");
 	}
 
 	/**
@@ -62,7 +65,7 @@ public class Serialize {
 			base = base.concat(" </complexType>\n");
 			base = base.concat("</DPSerialization>\n");
 
-			System.out.println(base);
+			Logging.getInstance().write(1,base);
 
 			fileWriter = new FileWriter(file, true);
 			BufferedWriter bufferWritter = new BufferedWriter(fileWriter);
@@ -101,6 +104,7 @@ public class Serialize {
 	public Object getValue(Method methods, Object obj) {
 
 		try {
+			Logging.getInstance().write(2,methods.toString());
 			return methods.invoke(obj);
 		} catch (IllegalArgumentException e) {
 			System.err.println("Illegal Argument!");

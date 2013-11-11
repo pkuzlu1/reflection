@@ -5,6 +5,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import reflection.serDeser.Deserialize;
+import reflection.serDeser.SerializationStrategy;
 import reflection.serDeser.Serialize;
 import reflection.util.Debug;
 import reflection.util.Logging;
@@ -31,7 +32,7 @@ public class Driver {
 		String outputFileName = args[1];
 
 		Deserialize deSerializer = new Deserialize(inputFileName);
-		Serialize Serializer = new Serialize(outputFileName);
+		SerializationStrategy Serializer = new Serialize(outputFileName);
 
 		ArrayList<Object> deSerializedObjects = deSerializer.deSerializeFile();
 
@@ -48,7 +49,8 @@ public class Driver {
 						.equals(MyAllTypesSecond.class.getName())) {
 					snd.add((MyAllTypesSecond) deSerializedObjects.get(i));
 				}
-				Serializer.serializeObject(deSerializedObjects.get(i));
+				
+				serialize(deSerializedObjects.get(i),Serializer);
 			}
 			Logging.getInstance().write(0,
 					"Unique MyAllTypesFirst=" + fst.size());
@@ -59,5 +61,9 @@ public class Driver {
 			System.err.println("No deSerialized Object Found! ");
 			System.exit(-1);
 		}
+	}
+	
+	public static void serialize(Object object, SerializationStrategy serializer){
+		serializer.serializeObject(object);
 	}
 }

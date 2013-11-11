@@ -19,10 +19,10 @@ Strategy Pattern
 
 Use Debug in the following way:
         If Debug value is 0: prints number of unique objects
-        If Debug value is 1: prints driver output (detailed agenda)
-        If Debug value is 2: prints out quick agenda (just activty names)
-        If Debug value is 3: prints out all activities in detail
-        If Debug value is 4: prints out every constructor call
+        If Debug value is 1: prints out serialized output
+        If Debug value is 2: everytime object's method invoked, prints out method name in detail
+        If Debug value is 3: prints out constructor calls
+        If Debug value is 4: no output
 
 PARTS THAT ARE NOT COMPLETE:
 ------------------------------
@@ -39,24 +39,29 @@ FILES:
 SAMPLE OUTPUT:
 ---------------
 Output for Debug Value 0;
--->ADD
+Input File MyAllTypes2.txt
+
+     [java] Unique Objects
+     [java] Unique MyAllTypesFirst=4
+     [java] Unique Objects
+     [java] Unique MyAllTypesSecond=9
 
 
 TO COMPILE:
 ------------
 Just extract the files and then compile the designConf with ANT.
-   1. cd to the folder where you downloaded Zhao_Wyman_Sendir_Bedri_assign2.tar.gz
+   1. cd to the folder where you downloaded Bedri_Sendir.tar.gz
    2. use these commands:
-        2a) gunzip Zhao_Wyman_Sendir_Bedri_assign2.tar.gz
-        2b) tar -xvf Zhao_Wyman_Sendir_Bedri_assign2.tar.gz
-   3. cd to Zhao_Wyman_Sendir_Bedri_assign2.tar.gz
-   4. cd to designConf
+        2a) gunzip Bedri_Sendir.tar.gz
+        2b) tar -xvf Bedri_Sendir.tar.gz
+   3. cd to Bedri_Sendir.tar.gz
+   4. cd to reflection
    5. ant compile
 
 TO RUN:
 --------
-  Please run as: ant run OR java -jar build/jar/designConf.jar <DEBUG_VALUE>
-  For example: ant run OR java -jar build/jar/designConf.jar 1
+  Please run as: ant run OR java -jar build/jar/reflection.jar <DEBUG_VALUE> <InputFile> <OutputFile>
+  For example: ant run OR java -jar build/jar/reflection.jar 0 MyAllTypes.txt MyAllTypesCopy.txt
 
 EXTRA CREDIT:
 -------------

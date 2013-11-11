@@ -8,6 +8,8 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 
+import reflection.util.Logging;
+
 public class Deserialize {
 	private String filename;
 
@@ -16,6 +18,7 @@ public class Deserialize {
 	 */
 	public Deserialize(String n_filename) {
 		filename = n_filename;
+		Logging.getInstance().write(3,"DeSerialize Constructor Call");
 	}
 
 	/**
@@ -74,30 +77,37 @@ public class Deserialize {
 							Method mymethod = c.getDeclaredMethod("set" + tag,
 									new Class[] { Integer.TYPE });
 							mymethod.invoke(temp, (Integer.valueOf(value)));
+							Logging.getInstance().write(2,mymethod.toString());
 						} else if (type.equals("string")) {
 							Method mymethod = c.getDeclaredMethod("set" + tag,
 									new Class[] { String.class });
 							mymethod.invoke(temp, value);
+							Logging.getInstance().write(2,mymethod.toString());
 						} else if (type.equals("short")) {
 							Method mymethod = c.getDeclaredMethod("set" + tag,
 									new Class[] { Short.TYPE });
 							mymethod.invoke(temp, (Short.valueOf(value)));
+							Logging.getInstance().write(2,mymethod.toString());
 						} else if (type.equals("double")) {
 							Method mymethod = c.getDeclaredMethod("set" + tag,
 									new Class[] { Double.TYPE });
 							mymethod.invoke(temp, (Double.valueOf(value)));
+							Logging.getInstance().write(2,mymethod.toString());
 						} else if (type.equals("long")) {
 							Method mymethod = c.getDeclaredMethod("set" + tag,
 									new Class[] { Long.TYPE });
 							mymethod.invoke(temp, (Long.valueOf(value)));
+							Logging.getInstance().write(2,mymethod.toString());
 						} else if (type.equals("char")) {
 							Method mymethod = c.getDeclaredMethod("set" + tag,
 									new Class[] { Character.TYPE });
 							mymethod.invoke(temp, (value.charAt(0)));
+							Logging.getInstance().write(2,mymethod.toString());
 						} else if (type.equals("float")) {
 							Method mymethod = c.getDeclaredMethod("set" + tag,
 									new Class[] { Float.TYPE });
 							mymethod.invoke(temp, (Float.parseFloat(value)));
+							Logging.getInstance().write(2,mymethod.toString());
 						}
 					}
 				}
