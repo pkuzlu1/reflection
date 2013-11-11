@@ -3,14 +3,15 @@ package reflection.driver;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
-
-import reflection.serDeser.Deserialize;
-import reflection.serDeser.SerializationStrategy;
-import reflection.serDeser.Serialize;
 import reflection.util.Debug;
 import reflection.util.Logging;
 import reflection.util.MyAllTypesFirst;
 import reflection.util.MyAllTypesSecond;
+import reflection.serDeser.DeSerializationStrategy;
+import reflection.serDeser.Deserialize;
+import reflection.serDeser.SerializationStrategy;
+import reflection.serDeser.Serialize;
+
 
 public class Driver {
 
@@ -31,12 +32,11 @@ public class Driver {
 		String inputFileName = args[0];
 		String outputFileName = args[1];
 
-		Deserialize deSerializer = new Deserialize(inputFileName);
+		DeSerializationStrategy deSerializer = new Deserialize();
 		SerializationStrategy Serializer = new Serialize(outputFileName);
 
-		ArrayList<Object> deSerializedObjects = deSerializer.deSerializeFile();
-
-		if (deSerializedObjects != null) {	
+		ArrayList<Object> deSerializedObjects = deserialize(inputFileName,deSerializer);
+		if (deSerializedObjects != null){
 			Set<MyAllTypesFirst> fst = new HashSet<MyAllTypesFirst>();
 			Set<MyAllTypesSecond> snd = new HashSet<MyAllTypesSecond>();
 
@@ -49,7 +49,7 @@ public class Driver {
 						.equals(MyAllTypesSecond.class.getName())) {
 					snd.add((MyAllTypesSecond) deSerializedObjects.get(i));
 				}
-				
+
 				serialize(deSerializedObjects.get(i),Serializer);
 			}
 			Logging.getInstance().write(0,
@@ -62,8 +62,11 @@ public class Driver {
 			System.exit(-1);
 		}
 	}
-	
+
 	public static void serialize(Object object, SerializationStrategy serializer){
 		serializer.serializeObject(object);
+	}
+	public static ArrayList<Object> deserialize(String filename, DeSerializationStrategy deserializer){
+		return deserializer.deSerialize(filename);
 	}
 }

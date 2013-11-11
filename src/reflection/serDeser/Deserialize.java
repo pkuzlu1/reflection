@@ -10,21 +10,17 @@ import java.util.ArrayList;
 
 import reflection.util.Logging;
 
-public class Deserialize {
-	private String filename;
+public class Deserialize implements DeSerializationStrategy{
+	
 
-	/**
-	 * @param n_filename
-	 */
-	public Deserialize(String n_filename) {
-		filename = n_filename;
+	public Deserialize() {
 		Logging.getInstance().write(3,"DeSerialize Constructor Call");
 	}
 
 	/**
 	 * @return
 	 */
-	public ArrayList<Object> deSerializeFile() {
+	public ArrayList<Object> deSerialize(String filename) {
 		BufferedReader br = null;
 		ArrayList<Object> objects = new ArrayList<Object>();
 
@@ -45,7 +41,6 @@ public class Deserialize {
 					String classname = inputLine.substring(classname_start + 1,
 							classname_end);
 					c = Class.forName(classname);
-					System.out.println(classname);
 					temp = c.newInstance();
 				} else if (inputLine.contains("</complexType>")) {
 					objects.add(temp);
