@@ -1,7 +1,7 @@
 <DPSerialization>
  <complexType xsi:type="reflection.util.MyAllTypesFirst">
-  <myString xsi:type="xsd:string">Design Patterns</myString>
   <myInt xsi:type="xsd:int">17</myInt>
+  <myString xsi:type="xsd:string">Design Patterns</myString>
   <myDouble xsi:type="xsd:double">3.14</myDouble>
   <myLong xsi:type="xsd:long">1212121</myLong>
   <myChar xsi:type="xsd:char">D</myChar>
@@ -36,8 +36,8 @@
 </DPSerialization>
 <DPSerialization>
  <complexType xsi:type="reflection.util.MyAllTypesFirst">
-  <myString xsi:type="xsd:string">Design Patterns</myString>
   <myInt xsi:type="xsd:int">117</myInt>
+  <myString xsi:type="xsd:string">Design Patterns</myString>
   <myDouble xsi:type="xsd:double">3.14</myDouble>
   <myLong xsi:type="xsd:long">1212121</myLong>
   <myChar xsi:type="xsd:char">D</myChar>
@@ -45,8 +45,8 @@
 </DPSerialization>
 <DPSerialization>
  <complexType xsi:type="reflection.util.MyAllTypesFirst">
-  <myString xsi:type="xsd:string">Design Patterns</myString>
   <myInt xsi:type="xsd:int">17</myInt>
+  <myString xsi:type="xsd:string">Design Patterns</myString>
   <myDouble xsi:type="xsd:double">3.14</myDouble>
   <myLong xsi:type="xsd:long">1212121</myLong>
   <myChar xsi:type="xsd:char">D</myChar>
@@ -81,8 +81,8 @@
 </DPSerialization>
 <DPSerialization>
  <complexType xsi:type="reflection.util.MyAllTypesFirst">
-  <myString xsi:type="xsd:string">Design Patterns</myString>
   <myInt xsi:type="xsd:int">117</myInt>
+  <myString xsi:type="xsd:string">Design Patterns</myString>
   <myDouble xsi:type="xsd:double">3.14</myDouble>
   <myLong xsi:type="xsd:long">1212121</myLong>
   <myChar xsi:type="xsd:char">D</myChar>
@@ -90,8 +90,8 @@
 </DPSerialization>
 <DPSerialization>
  <complexType xsi:type="reflection.util.MyAllTypesFirst">
-  <myString xsi:type="xsd:string">Design Patterns</myString>
   <myInt xsi:type="xsd:int">17</myInt>
+  <myString xsi:type="xsd:string">Design Patterns</myString>
   <myDouble xsi:type="xsd:double">3.14</myDouble>
   <myLong xsi:type="xsd:long">1212121</myLong>
   <myChar xsi:type="xsd:char">D</myChar>
@@ -126,8 +126,8 @@
 </DPSerialization>
 <DPSerialization>
  <complexType xsi:type="reflection.util.MyAllTypesFirst">
-  <myString xsi:type="xsd:string">Design Patterns</myString>
   <myInt xsi:type="xsd:int">117</myInt>
+  <myString xsi:type="xsd:string">Design Patterns</myString>
   <myDouble xsi:type="xsd:double">3.14</myDouble>
   <myLong xsi:type="xsd:long">1212121</myLong>
   <myChar xsi:type="xsd:char">D</myChar>
@@ -135,8 +135,8 @@
 </DPSerialization>
 <DPSerialization>
  <complexType xsi:type="reflection.util.MyAllTypesFirst">
-  <myString xsi:type="xsd:string">Design Patterns</myString>
   <myInt xsi:type="xsd:int">17</myInt>
+  <myString xsi:type="xsd:string">Design Patterns</myString>
   <myDouble xsi:type="xsd:double">3.14</myDouble>
   <myLong xsi:type="xsd:long">1212121</myLong>
   <myChar xsi:type="xsd:char">D</myChar>
@@ -171,8 +171,8 @@
 </DPSerialization>
 <DPSerialization>
  <complexType xsi:type="reflection.util.MyAllTypesFirst">
-  <myString xsi:type="xsd:string">Design Patterns</myString>
   <myInt xsi:type="xsd:int">117</myInt>
+  <myString xsi:type="xsd:string">Design Patterns</myString>
   <myDouble xsi:type="xsd:double">3.14</myDouble>
   <myLong xsi:type="xsd:long">1212121</myLong>
   <myChar xsi:type="xsd:char">D</myChar>
@@ -180,8 +180,8 @@
 </DPSerialization>
 <DPSerialization>
  <complexType xsi:type="reflection.util.MyAllTypesFirst">
-  <myString xsi:type="xsd:string">Design Patterns</myString>
   <myInt xsi:type="xsd:int">17</myInt>
+  <myString xsi:type="xsd:string">Design Patterns</myString>
   <myDouble xsi:type="xsd:double">3.14</myDouble>
   <myLong xsi:type="xsd:long">1212121</myLong>
   <myChar xsi:type="xsd:char">D</myChar>
@@ -216,8 +216,8 @@
 </DPSerialization>
 <DPSerialization>
  <complexType xsi:type="reflection.util.MyAllTypesFirst">
-  <myString xsi:type="xsd:string">Design Patterns</myString>
   <myInt xsi:type="xsd:int">117</myInt>
+  <myString xsi:type="xsd:string">Design Patterns</myString>
   <myDouble xsi:type="xsd:double">3.14</myDouble>
   <myLong xsi:type="xsd:long">1212121</myLong>
   <myChar xsi:type="xsd:char">D</myChar>
@@ -225,8 +225,8 @@
 </DPSerialization>
 <DPSerialization>
  <complexType xsi:type="reflection.util.MyAllTypesFirst">
-  <myString xsi:type="xsd:string">Design Patterns</myString>
   <myInt xsi:type="xsd:int">17</myInt>
+  <myString xsi:type="xsd:string">Design Patterns</myString>
   <myDouble xsi:type="xsd:double">3.14</myDouble>
   <myLong xsi:type="xsd:long">1212121</myLong>
   <myChar xsi:type="xsd:char">D</myChar>
@@ -261,8 +261,8 @@
 </DPSerialization>
 <DPSerialization>
  <complexType xsi:type="reflection.util.MyAllTypesFirst">
-  <myString xsi:type="xsd:string">Design Patterns</myString>
   <myInt xsi:type="xsd:int">117</myInt>
+  <myString xsi:type="xsd:string">Design Patterns</myString>
   <myDouble xsi:type="xsd:double">3.14</myDouble>
   <myLong xsi:type="xsd:long">1212121</myLong>
   <myChar xsi:type="xsd:char">D</myChar>
@@ -297,8 +297,8 @@
 </DPSerialization>
 <DPSerialization>
  <complexType xsi:type="reflection.util.MyAllTypesFirst">
-  <myString xsi:type="xsd:string">Design Patterns</myString>
   <myInt xsi:type="xsd:int">117</myInt>
+  <myString xsi:type="xsd:string">Design Patterns</myString>
   <myDouble xsi:type="xsd:double">3.14</myDouble>
   <myLong xsi:type="xsd:long">1212121</myLong>
   <myChar xsi:type="xsd:char">E</myChar>
@@ -333,8 +333,8 @@
 </DPSerialization>
 <DPSerialization>
  <complexType xsi:type="reflection.util.MyAllTypesFirst">
-  <myString xsi:type="xsd:string">Design Patterns</myString>
   <myInt xsi:type="xsd:int">1117</myInt>
+  <myString xsi:type="xsd:string">Design Patterns</myString>
   <myDouble xsi:type="xsd:double">3.14</myDouble>
   <myLong xsi:type="xsd:long">1212121</myLong>
   <myChar xsi:type="xsd:char">D</myChar>

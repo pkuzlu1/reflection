@@ -26,8 +26,7 @@ public class Driver {
 		} catch (NumberFormatException e) {
 			System.err.println("Debug value must be integer!");
 			System.exit(-1);
-		} finally {
-		}
+		} finally {}
 
 		String inputFileName = args[0];
 		String outputFileName = args[1];
@@ -37,9 +36,10 @@ public class Driver {
 
 		ArrayList<Object> deSerializedObjects = deserialize(inputFileName,deSerializer);
 		if (deSerializedObjects != null){
+			//Sets ensure uniqueness 
 			Set<MyAllTypesFirst> fst = new HashSet<MyAllTypesFirst>();
 			Set<MyAllTypesSecond> snd = new HashSet<MyAllTypesSecond>();
-
+			//Serialize each object returned by deSerializer
 			for (int i = 0; i < deSerializedObjects.size(); i++) {
 				if (deSerializedObjects.get(i).getClass().getName()
 						.equals(MyAllTypesFirst.class.getName())) {
@@ -49,7 +49,6 @@ public class Driver {
 						.equals(MyAllTypesSecond.class.getName())) {
 					snd.add((MyAllTypesSecond) deSerializedObjects.get(i));
 				}
-
 				serialize(deSerializedObjects.get(i),Serializer);
 			}
 			Logging.getInstance().write(0,

@@ -19,7 +19,7 @@ public class Serialize implements SerializationStrategy{
 	 */
 	public Serialize(String n_filename) {
 		filename = n_filename;
-		//create file if it doesnot exist or delete the old one 
+		//create file if it does not exist or delete the old one 
 		file = new File(filename);
 		try {
 			if (!file.exists()) {

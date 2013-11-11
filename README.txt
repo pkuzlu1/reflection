@@ -3,7 +3,7 @@ Fall 2013
 PROJECT 3 README FILE
 
 Due Date: Sunday, 10 November 2013, 11.59 PM EST
-Submission Date: Sunday, 10 November 2013
+Submission Date: Sunday, 11 November 2013
 Grace Period Used This Project: 18 Days
 Grace Period Remaining: 0 Days
 Author(s): Bedri Sendir
@@ -15,7 +15,8 @@ Match assignment requirements with features of design pattern(s) and apply the c
 
 Pattern(s) Used:
 
-Strategy Pattern
+Strategy Pattern for both Serialization and DeSerialization
+
 
 Use Debug in the following way:
         If Debug value is 0: prints number of unique objects
@@ -34,7 +35,20 @@ None
 
 FILES:
 -----------
--->ADD
+
+└── reflection
+    ├── driver
+    │   └── Driver.java
+    ├── serDeser
+    │   ├── DeSerializationStrategy.java 
+    │   ├── Deserialize.java //deserializes given file into arraylist of objects
+    │   ├── SerializationStrategy.java 
+    │   └── Serialize.java //serializes given objects into xml format and appends it to given output filname
+    └── util
+        ├── Debug.java
+        ├── Logging.java
+        ├── MyAllTypesFirst.java 
+        └── MyAllTypesSecond.java
 
 SAMPLE OUTPUT:
 ---------------
@@ -60,6 +74,7 @@ Just extract the files and then compile the designConf with ANT.
 
 TO RUN:
 --------
+Command line args are hardcoded in build.xml
   Please run as: ant run OR java -jar build/jar/reflection.jar <DEBUG_VALUE> <InputFile> <OutputFile>
   For example: ant run OR java -jar build/jar/reflection.jar 0 MyAllTypes.txt MyAllTypesCopy.txt
 
@@ -69,7 +84,7 @@ N/A
 
 BIBLIOGRAPHY:
 --------------
-This serves as evidence that we are in no way intending Academic Dishonesty.
+This serves as evidence that I am in no way intending Academic Dishonesty.
 Bedri SENDIR
 
 *http://www.cs.binghamton.edu/~mgovinda/courses/cs542/p2.html
@@ -77,6 +92,8 @@ Bedri SENDIR
 *Head First Design Patterns
 Authors: Eric Freeman & Elisabeth Freeman with Kathy Sierra & Bert Bates
 Publisher: O’Reilly
+
+*http://sourcemaking.com/design_patterns/strategy/java/1
 
 ACKNOWLEDGEMENT:
 -----------------
