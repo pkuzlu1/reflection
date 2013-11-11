@@ -3,7 +3,7 @@
   <property name="build.compiler"       value="modern"/>
   <property name="src"                  value="src"/>
   <property name="BUILD"                value="build"/>
-  <property name="classes"              value="${BUILD}/classes"/>-
+  <property name="classes"              value="${BUILD}/classes"/>
 
 
 <target name="compile"

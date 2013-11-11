@@ -17,7 +17,7 @@ public class Deserialize {
 		filename = n_filename;
 	}
 
-	public ArrayList<Object> apply() {
+	public ArrayList<Object> deSerializeFile() {
 		BufferedReader br = null;
 		ArrayList<Object> objects = new ArrayList<Object>();
 
@@ -32,11 +32,9 @@ public class Deserialize {
 				if(inputLine.contains("DPSerialization>")){}
 				else if (inputLine.contains("<complexType ")) {
 					//read type
-				
 					int classname_start=inputLine.indexOf("\"");
 					int classname_end=inputLine.indexOf("\"",classname_start+1);
-					//System.out.println(classname_start+" "+classname_end);
-					
+
 					String classname=inputLine.substring(classname_start+1,classname_end);
 					c = Class.forName(classname);
 					System.out.println(classname);
@@ -47,32 +45,23 @@ public class Deserialize {
 					temp=null;
 					
 				}
-				else{
+						else{
 					if(inputLine.length()>0){
 						//read tag			
 						int tag_start=inputLine.indexOf("<");
 						int tag_end=inputLine.indexOf(" ",tag_start);
 						String tag=Character.toUpperCase(inputLine.charAt(tag_start+1))+inputLine.substring(tag_start+2,tag_end);
-						//System.out.println(tag);
-						
+
 						//read type
 						int type_start=inputLine.indexOf(":",inputLine.indexOf("\"")); 
 						int type_end=inputLine.indexOf("\"",type_start);
 						String type= inputLine.substring(type_start+1,type_end);
-						//System.out.println(type);
-						
+
 						//read value
 						int value_start=inputLine.indexOf(">");
 						int value_end=inputLine.indexOf("<", value_start);
 						String value=inputLine.substring(value_start+1,value_end);
-						//System.out.println(value);
-						
-						/*
-						Method[] method = c.getDeclaredMethods();
-						for(int i=0;i<method.length;i++){
-							System.out.println(method[i].toString());	
-						}
-						*/
+
 						if(type.equals("int")){
 							Method mymethod=c.getDeclaredMethod("set"+tag,new Class[]{Integer.TYPE});
 							mymethod.invoke(temp,(Integer.valueOf(value)));
@@ -99,11 +88,10 @@ public class Deserialize {
 						}
 						else if(type.equals("float")){
 							Method mymethod=c.getDeclaredMethod("set"+tag,new Class[]{Float.TYPE});
-							mymethod.invoke(temp,(Float.valueOf(value)));
+							mymethod.invoke(temp,(Float.parseFloat(value)));
 						}
 					}
 				}
-				//System.out.println(inputLine);
 			}
 		} catch (FileNotFoundException e) {
 			System.err.println("No Input File Found!");
@@ -137,7 +125,6 @@ public class Deserialize {
 				System.err.println("Cannot Close the Stream!");
 			}
 		}
-		System.out.println("Total Number of objects: "+objects.size());
 		return objects;
 
 	}

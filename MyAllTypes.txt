@@ -1,4 +1,4 @@
-<DPSerialization> 
+<DPSerialization>
  <complexType xsi:type="reflection.util.MyAllTypesFirst">
   <myInt xsi:type="xsd:int">17</myInt>
   <myString xsi:type="xsd:string">Design Patterns</myString>
@@ -7,34 +7,34 @@
   <myChar xsi:type="xsd:char">D</myChar>
  </complexType>
 </DPSerialization>
-<DPSerialization> 
+<DPSerialization>
  <complexType xsi:type="reflection.util.MyAllTypesSecond">
   <myIntS xsi:type="xsd:int">17</myIntS>
   <myStringS xsi:type="xsd:string">Anti Patterns</myStringS>
-  <myFloatS xsi:type="xsd:float">314</myFloatS>
+  <myFloatS xsi:type="xsd:float">314.0</myFloatS>
   <myShortS xsi:type="xsd:short">19</myShortS>
   <myCharS xsi:type="xsd:char">P</myCharS>
  </complexType>
 </DPSerialization>
-<DPSerialization> 
+<DPSerialization>
  <complexType xsi:type="reflection.util.MyAllTypesSecond">
   <myIntS xsi:type="xsd:int">19</myIntS>
   <myStringS xsi:type="xsd:string">Anti Patterns</myStringS>
-  <myFloatS xsi:type="xsd:float">314</myFloatS>
+  <myFloatS xsi:type="xsd:float">314.0</myFloatS>
   <myShortS xsi:type="xsd:short">19</myShortS>
   <myCharS xsi:type="xsd:char">P</myCharS>
  </complexType>
 </DPSerialization>
-<DPSerialization> 
+<DPSerialization>
  <complexType xsi:type="reflection.util.MyAllTypesSecond">
   <myIntS xsi:type="xsd:int">19</myIntS>
   <myStringS xsi:type="xsd:string">Anti Patterns</myStringS>
-  <myFloatS xsi:type="xsd:float">314</myFloatS>
+  <myFloatS xsi:type="xsd:float">314.0</myFloatS>
   <myShortS xsi:type="xsd:short">1</myShortS>
   <myCharS xsi:type="xsd:char">P</myCharS>
  </complexType>
 </DPSerialization>
-<DPSerialization> 
+<DPSerialization>
  <complexType xsi:type="reflection.util.MyAllTypesFirst">
   <myInt xsi:type="xsd:int">117</myInt>
   <myString xsi:type="xsd:string">Design Patterns</myString>
